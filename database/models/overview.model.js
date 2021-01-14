@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../connection.js');
+const dummyData = require('../fakeData/overviewDummyData.js');
 
 //define model/table
 const Overview = sequelize.define('overview', {
@@ -11,17 +12,17 @@ const Overview = sequelize.define('overview', {
   },
   product_description: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
-  feature1_tite: {
+  feature1_title: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   feature1_description: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
-  feature2_tite: {
+  feature2_title: {
     type: Sequelize.STRING,
     allowNull: true
   },
@@ -29,7 +30,7 @@ const Overview = sequelize.define('overview', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  feature3_tite: {
+  feature3_title: {
     type: Sequelize.STRING,
     allowNull: true
   },
@@ -37,7 +38,7 @@ const Overview = sequelize.define('overview', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  feature4_tite: {
+  feature4_title: {
     type: Sequelize.STRING,
     allowNull: true
   },
@@ -45,7 +46,7 @@ const Overview = sequelize.define('overview', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  feature5_tite: {
+  feature5_title: {
     type: Sequelize.STRING,
     allowNull: true
   },
@@ -53,7 +54,7 @@ const Overview = sequelize.define('overview', {
     type: Sequelize.STRING,
     allowNull: true
   },
-  feature6_tite: {
+  feature6_title: {
     type: Sequelize.STRING,
     allowNull: true
   },
@@ -66,5 +67,17 @@ const Overview = sequelize.define('overview', {
     allowNull: true
   }
 });
+
+Overview.addRecord = (newEntry) => {
+  //add this new entry to the table
+  console.log('FIRED')
+  Overview.create(newEntry)
+    .then(() => console.log('SUCCESSFULLY ADDED TO DATABASE'))
+    .catch((error) => console.log('FAILED ADDING TO DATABASE', error))
+}
+
+// const newRecord = dummyData.generateOneRecord();
+// console.log(newRecord)
+// Overview.addRecord(newRecord[0]);
 
 module.exports = Overview;

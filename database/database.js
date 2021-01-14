@@ -12,7 +12,7 @@ db.icons.belongsToMany(db.overview, {through: 'overview_icons'});
 
 
 //create tables based off models and associations
-db.sync()
+db.sync({force: true})
 .then(() => console.log('SUCCESS'))
 .catch(() => console.log('ERROR'))
 
@@ -24,7 +24,7 @@ db.sync()
 // console.log('NEW RECORD: ',newRecord)
 // db.overview.addRecord(newRecord);
 
-for(let i = 0; i <= 100; i++) {
-  let newRecord = dummyData.generateOneRecord();
-  db.overview.addRecord(newRecord);
-}
+// for(let i = 0; i <= 3; i++) {
+//   let newRecord = dummyData.generateOneRecord();
+//   db.overview.addRecord(newRecord);
+// }

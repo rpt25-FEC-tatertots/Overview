@@ -1,33 +1,12 @@
 const faker = require('faker');
 
-//generate 100 record for overview table
 
-//add all 100 to database
-
-/*
-oneRecord = {
-  product_id: NUMBER,
-  product_description: STRING,
-  feature1_title: STRING,
-  feature1_description: STRING,
-  feature2_title: STRING,
-  feature2_description: STRING,
-  feature3_title: STRING,
-  feature3_description: STRING,
-  feature4_title: STRING,
-  feature4_description: STRING,
-  feature5_title: STRING,
-  feature5_description: STRING,
-  feature6_title: STRING,
-  feature6_description: STRING,
-  weight: STRING
-}
-*/
-
+//random number generator function generates a random number between 0 and 'num'
 const randomNumberGenerator = (num) => {
   return faker.random.number(num);
 }
 
+//generates one complete record
 const generateOneRecord = () => {
   const oneRecord = {
     product_description:  faker.lorem.sentence(randomNumberGenerator(35)),
@@ -49,6 +28,7 @@ const generateOneRecord = () => {
   return oneRecord;
 };
 
+//generates one partial record
 const generatePartialRecord = () => {
   const partialRecord = {
     product_description:  faker.lorem.sentence(randomNumberGenerator(35)),
@@ -69,17 +49,5 @@ const generatePartialRecord = () => {
   return partialRecord;
 };
 
-// //generate five records to make sure this works
-// const fiveRecords = [];
-
-// for(i = 0; i < 6; i++) {
-//   if(i % 2 === 0) {
-//     fiveRecords.push(generateOneRecord());
-//   } else {
-//     fiveRecords.push(generatePartialRecord());
-//   }
-// };
-
-// console.log(fiveRecords);
 
 module.exports = {generateOneRecord, generatePartialRecord};

@@ -22,3 +22,4 @@ const Icons = sequelize.define('icons', {
 
 
 module.exports = Icons;
+

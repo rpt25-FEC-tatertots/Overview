@@ -1,13 +1,13 @@
 //this file is responsible for MySQL connection
 
 const { Sequelize } = require('sequelize');
-
+const token = require('./database.config.js');
 
 //creates the database
 const sequelize = new Sequelize({
   database: 'fec_microservices',
-  username: 'root',
-  password: null,
+  username: token.username,
+  password: token.password,
   dialect: 'mysql'
 });
 

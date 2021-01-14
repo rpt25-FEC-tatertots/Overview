@@ -69,14 +69,17 @@ const generatePartialRecord = () => {
   return partialRecord;
 };
 
-const fiveRecords = [];
+// //generate five records to make sure this works
+// const fiveRecords = [];
 
-for(i = 0; i < 6; i++) {
-  if(i % 2 === 0) {
-    fiveRecords.push(generateOneRecord());
-  } else {
-    fiveRecords.push(generatePartialRecord());
-  }
-};
+// for(i = 0; i < 6; i++) {
+//   if(i % 2 === 0) {
+//     fiveRecords.push(generateOneRecord());
+//   } else {
+//     fiveRecords.push(generatePartialRecord());
+//   }
+// };
 
-console.log(fiveRecords);
+// console.log(fiveRecords);
+
+module.exports = {generateOneRecord, generatePartialRecord};

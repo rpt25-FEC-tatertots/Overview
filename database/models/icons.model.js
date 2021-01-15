@@ -9,17 +9,33 @@ const Icons = sequelize.define('icons', {
     allowNull: false,
     primaryKey: true
   },
-  icon: {
-    type: Sequelize.STRING, //to be determined
+  icon_title: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  icon_svg: {
+    type: Sequelize.TEXT,
     allowNull: false
   },
   icon_description: {
     type: Sequelize.STRING,
     allowNull: true
+  },
+  xmlns: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 });
 
+Icons.addNewIcon = async (newIcon) => {
+  try {
+    await Icons.create(newIcon)
+    await console.log('SUCCESSFULLY ADDED ICON')
+  } catch (error) {
+    console.log('FAILED ADDING ICON: ', error)
+  }
 
+}
 
 module.exports = Icons;
 

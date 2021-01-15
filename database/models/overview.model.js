@@ -85,4 +85,13 @@ Overview.addRecord = (newEntry) => {
 //   }
 // };
 
+//IN PROGRESS
+// Overview.retrieveRecord = async () => {
+//   try {
+//     let retrievedRecord = await Overview.
+//   } catch (error) {
+//     console.log('FAILED RETRIEVING RECORD: ', error)
+//   }
+// }
+
 module.exports = Overview;

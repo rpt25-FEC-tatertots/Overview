@@ -7,6 +7,13 @@ class App extends React.Component {
     this.state = {}
   }
 
+  componenentDidMount() {
+    axios.get('/overview/icons/')
+      .then((response) => {
+        this.setState()
+      })
+      .catch((error) => console.log('FAILED ON CLIENT SIDE: ', error))
+  }
 
   render() {
     return (

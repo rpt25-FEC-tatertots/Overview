@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-
+import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData.js';
 
 
 class App extends React.Component {
@@ -11,9 +11,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/overview/icons/')
+    let randomId = randomNumberGenerator(100);
+    axios.get('/overview/icons/', {params: {product_id: randomId}})
       .then((response) => {
-        console.log(response)
+        console.log(response.data)
+        //set the state with this product info, render it to the dom
       })
       .catch((error) => console.log('FAILED ON CLIENT SIDE: ', error))
   }

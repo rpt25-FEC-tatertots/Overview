@@ -85,17 +85,16 @@ Overview.addRecord = (newEntry) => {
 //   }
 // };
 
-//IN PROGRESS
-Overview.retrieveRecord = async () => {
+
+Overview.retrieveOneProduct = async (incomingId) => {
   try {
-    let retrievedRecord = await Overview.
+    let retrievedRecord = await Overview.findOne({where: {product_id: incomingId}})
+    console.log('RETRIEVED RECORD: ', retrievedRecord)
+    return retrievedRecord;
   } catch (error) {
     console.log('FAILED RETRIEVING RECORD: ', error)
   }
 }
 
-Overview.testFunction = () => {
-  return 'MASON'
-}
 
 module.exports = Overview;

@@ -11,8 +11,12 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 app.get('/overview/icons/', (req, res) => {
-  let answer = db.overview.testFunction();
-  res.send(answer);
+  const productNum = req.query.product_id
+  return db.overview.retrieveOneProduct(productNum)
+    .then((overviewInfo) => {
+      res.send(overviewInfo)
+    })
+    .catch((err) => console.log('ERROR IN SERVER: ', err))
 })
 
 app.listen(6001, function () {

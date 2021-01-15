@@ -85,4 +85,16 @@ Overview.addRecord = (newEntry) => {
 //   }
 // };
 
+
+Overview.retrieveOneProduct = async (incomingId) => {
+  try {
+    let retrievedRecord = await Overview.findOne({where: {product_id: incomingId}})
+    console.log('RETRIEVED RECORD: ', retrievedRecord)
+    return retrievedRecord;
+  } catch (error) {
+    console.log('FAILED RETRIEVING RECORD: ', error)
+  }
+}
+
+
 module.exports = Overview;

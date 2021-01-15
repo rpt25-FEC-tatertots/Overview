@@ -17,14 +17,3 @@ db.sync({force: true})
 .catch(() => console.log('ERROR'))
 
 //NOTE: for queries, I want "eager loading" using the "include" option
-
-//generate fake data and add to database
-// const newRecord = dummyData.generateOneRecord();
-// console.log('ARRAY IS ARRAY: ', typeof(newRecord))
-// console.log('NEW RECORD: ',newRecord)
-// db.overview.addRecord(newRecord);
-
-// for(let i = 0; i <= 3; i++) {
-//   let newRecord = dummyData.generateOneRecord();
-//   db.overview.addRecord(newRecord);
-// }

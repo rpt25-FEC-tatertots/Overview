@@ -74,10 +74,15 @@ Overview.addRecord = (newEntry) => {
   Overview.create(newEntry)
     .then(() => console.log('SUCCESSFULLY ADDED TO DATABASE'))
     .catch((error) => console.log('FAILED ADDING TO DATABASE', error))
-}
+};
 
-// const newRecord = dummyData.generateOneRecord();
-// console.log(newRecord)
-// Overview.addRecord(newRecord[0]);
+// Overview.addRecord = async (newEntry) => {
+//   try {
+//     await Overview.create(newEntry);
+//     console.log('SUCCESSFULLY ADDED TO DATABASE')
+//   } catch (error) {
+//     console.log('FAILED: ', error)
+//   }
+// };
 
 module.exports = Overview;

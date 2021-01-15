@@ -7,7 +7,10 @@ import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      product_description:'',
+      weight: ''
+    }
   }
 
   componentDidMount() {
@@ -16,13 +19,18 @@ class App extends React.Component {
       .then((response) => {
         console.log(response.data)
         //set the state with this product info, render it to the dom
+        this.setState({product_description: response.data.product_description, weight: response.data.weight})
       })
       .catch((error) => console.log('FAILED ON CLIENT SIDE: ', error))
   }
 
   render() {
     return (
-      <div>hello world</div>
+      <div>
+        <div>Hi Linda Kagan How are you  today?</div>
+        <h1>{this.state.product_description}</h1>
+        <h3>{this.state.weight}</h3>
+      </div>
     )
   }
 };

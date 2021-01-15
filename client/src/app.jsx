@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -7,10 +10,10 @@ class App extends React.Component {
     this.state = {}
   }
 
-  componenentDidMount() {
+  componentDidMount() {
     axios.get('/overview/icons/')
       .then((response) => {
-        this.setState()
+        console.log(response)
       })
       .catch((error) => console.log('FAILED ON CLIENT SIDE: ', error))
   }

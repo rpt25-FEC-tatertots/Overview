@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../connection.js');
-const dummyData = require('../fakeData/overviewDummyData.js');
+
 
 //define model/table
 const Overview = sequelize.define('overview', {
@@ -11,7 +11,7 @@ const Overview = sequelize.define('overview', {
     primaryKey: true
   },
   product_description: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature1_title: {
@@ -19,47 +19,47 @@ const Overview = sequelize.define('overview', {
     allowNull: true
   },
   feature1_description: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature2_title: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature2_description: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature3_title: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature3_description: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature4_title: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature4_description: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature5_title: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature5_description: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature6_title: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   feature6_description: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   weight: {
@@ -67,6 +67,7 @@ const Overview = sequelize.define('overview', {
     allowNull: true
   }
 });
+
 
 
 Overview.addRecord = async (newEntry) => {

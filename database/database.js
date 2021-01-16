@@ -8,25 +8,15 @@ const dummyData = require('./fakeData/overviewDummyData.js');
 //join table creation
 db.overview.belongsToMany(db.icons, {through: 'overview_icons'});
 db.icons.belongsToMany(db.overview, {through: 'overview_icons'});
-console.log('🤯DB OVERVIEW', db.overview)
-
-
 
 //practicing adding one association to the join table
 const addToJoinTable =  () => {
-  console.log('😍')
   return db.overview.findByPk(1)
     .then((product) => {
-      console.log('🥰 PRODUCT: ', product)
       return db.icons.findByPk(4).then((icon) => {
-        console.log('🥶 ICON: ', icon)
         product.addIcon(icon);
       })
     })
-    // .then((icon) => {
-    //   console.log('🥶 ICON: ', icon)
-    //   db.overview.setIcon(icon)
-    // })
     .then(() => {
       console.log('SUCCESS IN JOIN TABLE ADDITION')
     })
@@ -35,11 +25,11 @@ const addToJoinTable =  () => {
     })
 }
 
-addToJoinTable();
+// addToJoinTable();
 
 //create tables based off models and associations
-db.sync()
-// db.sync({force: true})
+// db.sync()
+db.sync({force: true})
 .then(() => console.log('SUCCESS'))
 .catch(() => console.log('ERROR'))
 

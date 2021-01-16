@@ -68,22 +68,15 @@ const Overview = sequelize.define('overview', {
   }
 });
 
-Overview.addRecord = (newEntry) => {
-  //add this new entry to the table
-  console.log('FIRED')
-  Overview.create(newEntry)
-    .then(() => console.log('SUCCESSFULLY ADDED TO DATABASE'))
-    .catch((error) => console.log('FAILED ADDING TO DATABASE', error))
-};
 
-// Overview.addRecord = async (newEntry) => {
-//   try {
-//     await Overview.create(newEntry);
-//     console.log('SUCCESSFULLY ADDED TO DATABASE')
-//   } catch (error) {
-//     console.log('FAILED: ', error)
-//   }
-// };
+Overview.addRecord = async (newEntry) => {
+  try {
+    await Overview.create(newEntry);
+    console.log('SUCCESSFULLY ADDED TO DATABASE')
+  } catch (error) {
+    console.log('FAILED: ', error)
+  }
+};
 
 
 Overview.retrieveOneProduct = async (incomingId) => {

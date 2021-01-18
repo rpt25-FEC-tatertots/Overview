@@ -31,7 +31,7 @@ const generateOneRecord = () => {
 //generates one partial record
 const generatePartialRecord = () => {
   const partialRecord = {
-    product_description:  faker.lorem.sentence(randomNumberGenerator(35)),
+    product_description:  faker.lorem.sentence(randomNumberGenerator(15)),
     feature1_title:       faker.lorem.word(),
     feature1_description: faker.lorem.words(randomNumberGenerator(15)),
     feature2_title:       faker.lorem.word(),

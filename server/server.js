@@ -12,7 +12,8 @@ app.use(express.json());
 
 app.get('/overview/icons/', (req, res) => {
   const productNum = req.query.product_id
-  return db.overview.retrieveOneProduct(productNum)
+  // return db.overview.retrieveOneProduct(productNum)
+  return db.overview.findByPk(productNum)
     .then((overviewInfo) => {
       res.send(overviewInfo)
     })

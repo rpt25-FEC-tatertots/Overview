@@ -10,7 +10,7 @@
   "scripts": {
     "react-dev": "webpack --watch",
     "start-dev": "nodemon server/server.js",
-    "seed-database": "node database/fakeData/seedDatabase.js"
+    "seed-database": "node database/database.js"
   },
   "dependencies": {
     "axios": "^0.21.1",

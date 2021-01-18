@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../connection.js');
 
+
 //define model/table
 const Icons = sequelize.define('icons', {
   icon_id: {
@@ -26,6 +27,7 @@ const Icons = sequelize.define('icons', {
     allowNull: true
   }
 });
+
 
 Icons.addNewIcon = async (newIcon) => {
   try {

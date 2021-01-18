@@ -1,8 +1,11 @@
 //this root database file
 const Sequelize = require('sequelize');
+const {gt, lte, ne, in: opIn} = Sequelize.Op;
 const db = require('./connection.js');
 db.overview = require('./models/overview.model.js');  //overview model/table
 db.icons = require('./models/icons.model.js');  //icons model/table
+const overviewData = require('./fakeData/overviewDummyData.js');
+const iconsData = require('./fakeData/iconsDummyData.js');
 
 
 //join table creation
@@ -12,28 +15,52 @@ db.icons.belongsToMany(db.overview, {through: 'overview_icons'});
 
 
 //create tables based off models and associations
-// db.sync()
-db.sync({force: true})
+db.sync()
+// db.sync({force: true})
 .then(() => console.log('SUCCESS'))
 .catch(() => console.log('ERROR'))
 
 //NOTE: for queries, I want "eager loading" using the "include" option
 
-// const addToJoinTable =  () => {
-//   console.log('🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎')
-//   return db.overview.findByPk(1)
-//     .then((product) => {
-//       console.log('🥶 PRODUCT: ', product)
-//       return db.icons.findByPk(4).then((icon) => {
-//         product.addIcon(icon);
-//       })
-//     })
-//     .then(() => {
-//       console.log('🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎SUCCESS IN JOIN TABLE ADDITION')
-//     })
-//     .catch((error) => {
-//       console.log('ERROR IN JOIN TABLE ADDITION: ', error)
-//     })
-// }
 
-// addToJoinTable();
+
+const addToOverview = async () => {
+  for(let i = 0; i < 100; i++) {
+    if( i % 2 === 0) {
+      let newRecord = overviewData.generateOneRecord();
+      await db.overview.create(newRecord);
+    } else {
+      let newRecord = overviewData.generatePartialRecord();
+      await db.overview.create(newRecord)
+    }
+  }
+};
+
+const addToIcons = async () => {
+  await iconsData.forEach((icon) => db.icons.addNewIcon(icon));
+}
+
+addToOverview()
+  .then(() => {
+    addToIcons();
+  })
+  .then(() => {
+    return db.overview.findAll({where: {
+      product_id: {
+        [lte]: 100
+        }
+      }
+    });
+  })
+  .then((allRecords) => {
+    for (let i = 0; i < allRecords.length; i++) {
+      let currentRecord = allRecords[i]
+      for (let j = 0; j <= 3; j++) {
+        let randomIconId = overviewData.randomNumberGenerator({min: 1, max: 13});
+        db.icons.findByPk(randomIconId).then((icon) => {
+                  currentRecord.addIcon(icon);
+        })
+      }
+    }
+  })
+  .catch(err => console.log('🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎ERROR IN NEW FUNCTION: ', err))

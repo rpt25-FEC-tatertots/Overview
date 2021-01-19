@@ -27,7 +27,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>Hi Linda Kagan How are you  today?</div>
         <h1>{this.state.product_description}</h1>
         <h3>{this.state.weight}</h3>
       </div>

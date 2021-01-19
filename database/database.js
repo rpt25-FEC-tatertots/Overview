@@ -22,7 +22,14 @@ db.sync()
 
 //NOTE: for queries, I want "eager loading" using the "include" option
 
-
+// const returnProductAndIcons = (productNum) => {
+//   return db.overview.findAll({
+//     where: {
+//       product_id: productNum
+//     },
+//     include: [db.icons]
+//   })
+// }
 
 const addToOverview = async () => {
   for(let i = 0; i < 100; i++) {
@@ -64,3 +71,6 @@ addToOverview()
     }
   })
   .catch(err => console.log('🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎ERROR IN NEW FUNCTION: ', err))
+
+
+  //module.exports = {returnProductAndIcons}

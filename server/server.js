@@ -3,6 +3,7 @@ const express = require('express');
 const db = require('../database/connection.js')
 db.icons = require('../database/models/icons.model.js');
 db.overview = require('../database/models/overview.model.js');
+// const queries = require('../database/database.js');
 
 const app = express();
 
@@ -10,10 +11,14 @@ app.use(express.static('./public/dist'));
 app.use(express.urlencoded());
 app.use(express.json());
 
+db.overview.belongsToMany(db.icons, {through: 'overview_icons'});
+db.icons.belongsToMany(db.overview, {through: 'overview_icons'});
+
+
 app.get('/overview/icons/', (req, res) => {
   const productNum = req.query.product_id
-  // return db.overview.retrieveOneProduct(productNum)
-  return db.overview.findByPk(productNum)
+  //might need to add to this query to also return all icons associated with this productNumber
+  return db.overview.findByPk(productNum, {include: [db.icons]})
     .then((overviewInfo) => {
       res.send(overviewInfo)
     })

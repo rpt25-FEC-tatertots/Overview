@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const db = require('./connection.js');
 db.icons = require('./models/icons.model.js');
 db.overview = require('./models/overview.model.js');

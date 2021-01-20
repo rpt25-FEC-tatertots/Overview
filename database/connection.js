@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // this file is responsible for MySQL connection
 
 const { Sequelize } = require('sequelize');

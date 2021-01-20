@@ -1,9 +1,7 @@
 import faker from 'faker';
 
 // random number generator function generates a random number between 0 and 'num'
-const randomNumberGenerator = (num) => {
-  return faker.random.number(num);
-};
+const randomNumberGenerator = (num) => faker.random.number(num);
 
 // generates one complete record
 const generateOneRecord = () => {

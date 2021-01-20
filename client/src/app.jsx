@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_description: '',
+      productDescription: '',
       weight: '',
     };
   }
@@ -20,7 +20,7 @@ class App extends React.Component {
         console.log(response.data);
         // set the state with this product info, render it to the dom
         this.setState({
-          product_description: response.data.product_description,
+          productDescription: response.data.product_description,
           weight: response.data.weight,
         });
       })
@@ -30,7 +30,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>{ this.state.product_description }</h1>
+        <h1>{ this.state.productDescription }</h1>
         <h3>{ this.state.weight }</h3>
       </div>
     );

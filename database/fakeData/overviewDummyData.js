@@ -48,4 +48,4 @@ const generatePartialRecord = () => {
   return partialRecord;
 };
 
-module.exports = { generateOneRecord, generatePartialRecord, randomNumberGenerator };
+export { generateOneRecord, generatePartialRecord, randomNumberGenerator };

@@ -8,7 +8,7 @@ db.overview = require('../database/models/overview.model.js');
 const app = express();
 
 app.use(express.static('./public/dist'));
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 db.overview.belongsToMany(db.icons, {through: 'overview_icons'});

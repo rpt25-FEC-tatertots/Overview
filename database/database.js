@@ -1,76 +1,65 @@
-//this root database file
+// this root database file
 const Sequelize = require('sequelize');
-const {gt, lte, ne, in: opIn} = Sequelize.Op;
+
+const { gt, lte, ne, in: opIn } = Sequelize.Op;
 const db = require('./connection.js');
-db.overview = require('./models/overview.model.js');  //overview model/table
-db.icons = require('./models/icons.model.js');  //icons model/table
+db.overview = require('./models/overview.model.js'); // overview model/table
+db.icons = require('./models/icons.model.js'); // icons model/table
 const overviewData = require('./fakeData/overviewDummyData.js');
 const iconsData = require('./fakeData/iconsDummyData.js');
 
+// join table creation
+db.overview.belongsToMany(db.icons, { through: 'overview_icons' });
+db.icons.belongsToMany(db.overview, { through: 'overview_icons' });
 
-//join table creation
-db.overview.belongsToMany(db.icons, {through: 'overview_icons'});
-db.icons.belongsToMany(db.overview, {through: 'overview_icons'});
-
-
-
-//create tables based off models and associations
+// create tables based off models and associations
 db.sync()
 // db.sync({force: true})
-.then(() => console.log('SUCCESS'))
-.catch(() => console.log('ERROR'))
+  .then(() => console.log('SUCCESS'))
+  .catch(() => console.log('ERROR'));
 
-//NOTE: for queries, I want "eager loading" using the "include" option
-
-// const returnProductAndIcons = (productNum) => {
-//   return db.overview.findAll({
-//     where: {
-//       product_id: productNum
-//     },
-//     include: [db.icons]
-//   })
-// }
+// NOTE: for queries, I want "eager loading" using the "include" option
 
 const addToOverview = async () => {
-  for(let i = 0; i < 100; i++) {
-    if( i % 2 === 0) {
-      let newRecord = overviewData.generateOneRecord();
+  for (let i = 0; i < 100; i++) {
+    if (i % 2 === 0) {
+      const newRecord = overviewData.generateOneRecord();
       await db.overview.create(newRecord);
     } else {
-      let newRecord = overviewData.generatePartialRecord();
-      await db.overview.create(newRecord)
+      const newRecord = overviewData.generatePartialRecord();
+      await db.overview.create(newRecord);
     }
   }
 };
 
 const addToIcons = async () => {
   await iconsData.forEach((icon) => db.icons.addNewIcon(icon));
-}
+};
 
 addToOverview()
   .then(() => {
     addToIcons();
   })
   .then(() => {
-    return db.overview.findAll({where: {
-      product_id: {
-        [lte]: 100
-        }
-      }
+    return db.overview.findAll({
+      where: {
+        product_id: {
+          [lte]: 100,
+        },
+      },
     });
   })
   .then((allRecords) => {
     for (let i = 0; i < allRecords.length; i++) {
-      let currentRecord = allRecords[i]
+      const currentRecord = allRecords[i];
       for (let j = 0; j <= 3; j++) {
-        let randomIconId = overviewData.randomNumberGenerator({min: 1, max: 13});
+        const randomIconId = overviewData.randomNumberGenerator({ min: 1, max: 13 });
         db.icons.findByPk(randomIconId).then((icon) => {
-                  currentRecord.addIcon(icon);
-        })
+          currentRecord.addIcon(icon);
+        });
       }
     }
   })
-  .catch(err => console.log('🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎ERROR IN NEW FUNCTION: ', err))
+  .catch((err) => console.log('🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎ERROR IN NEW FUNCTION: ', err));
 
-
-  //module.exports = {returnProductAndIcons}
+// module.exports = { returnProductAndIcons }

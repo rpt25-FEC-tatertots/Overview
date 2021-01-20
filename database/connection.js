@@ -1,26 +1,26 @@
-//this file is responsible for MySQL connection
+/* eslint-disable no-console */
+// this file is responsible for MySQL connection
 
 const { Sequelize } = require('sequelize');
 const token = require('./database.config.js');
 
-//creates the database
+// creates the database
 const sequelize = new Sequelize({
   database: 'fec_microservices',
   username: token.username,
   password: token.password,
-  dialect: 'mysql'
+  dialect: 'mysql',
 });
 
-//test the connection
+// test the connection
 sequelize
   .authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
   })
-  .catch(err => {
+  .catch((err) => {
     console.error('Unable to connect to the database:', err);
   });
 
-
-//export
+// export
 module.exports = sequelize;

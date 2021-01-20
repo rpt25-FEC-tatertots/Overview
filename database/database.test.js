@@ -24,3 +24,4 @@ test('Retrieves correct product from DB', async () => {
   db.close();
 
 });
+

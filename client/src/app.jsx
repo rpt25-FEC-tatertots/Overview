@@ -15,7 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const randomId = randomNumberGenerator(100);
-    axios.get('/overview/icons/', { params: { product_id: randomId } })
+    axios.get(`/overview/icons?product_id=${randomId}`)
       .then((response) => {
         console.log(response.data);
         // set the state with this product info, render it to the dom

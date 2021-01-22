@@ -29,3 +29,5 @@ app.get('/overview/icons/', (req, res) => {
 app.listen(6001, () => {
   console.log('listening on port 6001!');
 });
+
+module.exports = app;

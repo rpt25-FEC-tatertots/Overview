@@ -22,3 +22,10 @@ test('Get correct datatype from endpoint', async (done) => {
   expect(typeof res.body).toBe('object');
   done();
 });
+
+test('Gets the correct product from database', async(done) => {
+  const targetProductId = 12;
+  const res = await request(app).get(`/overview/icons?product_id=${targetProductId}`);
+  expect(res.body.product_id).toBe(targetProductId);
+  done();
+});

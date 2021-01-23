@@ -21,7 +21,8 @@ const StyledHeader = styled.h2`
 `;
 
 const StyledDiv = styled.div`
-flex-basis: 50%
+  flex-basis: 50%,
+  font-family: 'Nunito Sans';
 `;
 
 class App extends React.Component {

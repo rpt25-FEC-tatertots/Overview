@@ -17,7 +17,7 @@ const StyledHeader = styled.h2`
   letter-spacing: -.16px;
   line-height: 2rem;
   margin-top: .8rem;
-  font-family: ${NunitoSans}
+  font-family: 'Nunito Sans', sans-serif;
 `;
 
 const StyledDiv = styled.div`

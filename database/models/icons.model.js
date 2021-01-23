@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const Sequelize = require('sequelize');
 const sequelize = require('../connection.js');
 

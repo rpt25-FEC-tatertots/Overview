@@ -1,7 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import styled from 'styled-components';
 import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData';
+import NunitoSans from '/Users/masonpott/Desktop/HR/FEC/overview/Fonts/Nunito_Sans/NunitoSans-Bold.ttf';
+
+const StyledApp = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledHeader = styled.h2`
+  flex-basis: 25.390625%;
+  display: block;
+  margin-bottom: 3.2rem;
+  font-size: 1.6rem;
+  letter-spacing: -.16px;
+  line-height: 2rem;
+  margin-top: .8rem;
+  font-family: ${NunitoSans}
+`;
+
+const StyledDiv = styled.div`
+flex-basis: 50%
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -28,10 +50,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>{ this.state.productDescription }</h1>
-        <h3>{ this.state.weight }</h3>
-      </div>
+      <StyledApp>
+        <StyledHeader>Overview</StyledHeader>
+        <StyledDiv>{ this.state.productDescription }</StyledDiv>
+      </StyledApp>
     );
   }
 }

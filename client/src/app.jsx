@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData';
-import NunitoSans from '/Users/masonpott/Desktop/HR/FEC/overview/Fonts/Nunito_Sans/NunitoSans-Bold.ttf';
 
 const StyledApp = styled.div`
   display: flex;

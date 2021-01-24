@@ -18,11 +18,13 @@ const StyledHeader = styled.h2`
   line-height: 2rem;
   margin-top: .8rem;
   font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700;
 `;
 
 const StyledDiv = styled.div`
-  flex-basis: 50%,
+  flex-basis: 50%;
   font-family: 'Nunito Sans';
+  font-weight: 700;
 `;
 
 class App extends React.Component {

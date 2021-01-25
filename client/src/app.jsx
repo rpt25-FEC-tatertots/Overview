@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components';
+import DescriptionInfo from './components/DescriptionInfo.jsx';
 import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData';
 
 const StyledApp = styled.div`
@@ -18,21 +19,23 @@ const StyledHeader = styled.h2`
   line-height: 2rem;
   margin-top: .8rem;
   font-family: 'Nunito Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
 `;
 
 const StyledDiv = styled.div`
   flex-basis: 50%;
   font-family: 'Nunito Sans';
   font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  letter-spacing: -.32px;
 `;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productDescription: '',
-      weight: '',
+      overviewInfo: {},
     };
   }
 
@@ -40,11 +43,8 @@ class App extends React.Component {
     const randomId = randomNumberGenerator(100);
     axios.get(`/overview/icons?product_id=${randomId}`)
       .then((response) => {
-        console.log(response.data);
-        // set the state with this product info, render it to the dom
         this.setState({
-          productDescription: response.data.product_description,
-          weight: response.data.weight,
+          overviewInfo: response.data,
         });
       })
       .catch((error) => console.log('FAILED ON CLIENT SIDE: ', error));
@@ -54,7 +54,9 @@ class App extends React.Component {
     return (
       <StyledApp>
         <StyledHeader>Overview</StyledHeader>
-        <StyledDiv>{ this.state.productDescription }</StyledDiv>
+        <StyledDiv>
+          <DescriptionInfo overviewInfo={this.state.overviewInfo} />
+        </StyledDiv>
       </StyledApp>
     );
   }

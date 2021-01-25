@@ -22,15 +22,6 @@ const StyledHeader = styled.h2`
   font-weight: 400;
 `;
 
-const StyledDiv = styled.div`
-  flex-basis: 50%;
-  font-family: 'Nunito Sans';
-  font-weight: 700;
-  font-size: 2.4rem;
-  line-height: 2.8rem;
-  letter-spacing: -.32px;
-`;
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -54,9 +45,7 @@ class App extends React.Component {
     return (
       <StyledApp>
         <StyledHeader>Overview</StyledHeader>
-        <StyledDiv>
-          <DescriptionInfo overviewInfo={this.state.overviewInfo} />
-        </StyledDiv>
+        <DescriptionInfo overviewInfo={this.state.overviewInfo} />
       </StyledApp>
     );
   }

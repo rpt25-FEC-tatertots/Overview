@@ -57,15 +57,6 @@ class App extends React.Component {
   }
 
   render() {
-    // let FeatureDisplay;
-    // if (this.state.buttonClicked) {
-    //   FeatureDisplay = <>
-    //     <StyledHeader>Features</StyledHeader>
-    //       <InfoContainer> Put all the feature titles and descriptions here</InfoContainer>
-    //     </>
-    // } else {
-    //   FeatureDisplay = <div></div>
-    // }
     return (
       <div>
         <StyledApp>
@@ -78,8 +69,6 @@ class App extends React.Component {
         </StyledApp>
         <StyledApp>
           {this.state.buttonClicked ? <ProductDetails /> : <div></div>}
-          {/* <StyledHeader>Features</StyledHeader>
-          <InfoContainer> Put all the feature titles and descriptions here</InfoContainer> */}
         </StyledApp>
       </div>
     );

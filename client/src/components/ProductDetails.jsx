@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FeatureContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 // create style that can be applied to feature title text
 const FeatureHeader = styled.h2`
   font-family: Nunito Sans;

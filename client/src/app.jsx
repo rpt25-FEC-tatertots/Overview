@@ -1,15 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import styled from 'styled-components';
+import DescriptionInfo from './components/DescriptionInfo.jsx';
 import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData';
 
+const StyledApp = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledHeader = styled.h2`
+  flex-basis: 25.390625%;
+  display: block;
+  margin-bottom: 3.2rem;
+  font-size: 1.6rem;
+  letter-spacing: -.16px;
+  line-height: 2rem;
+  margin-top: .8rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+`;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productDescription: '',
-      weight: '',
+      overviewInfo: {},
     };
   }
 
@@ -17,11 +34,8 @@ class App extends React.Component {
     const randomId = randomNumberGenerator(100);
     axios.get(`/overview/icons?product_id=${randomId}`)
       .then((response) => {
-        console.log(response.data);
-        // set the state with this product info, render it to the dom
         this.setState({
-          productDescription: response.data.product_description,
-          weight: response.data.weight,
+          overviewInfo: response.data,
         });
       })
       .catch((error) => console.log('FAILED ON CLIENT SIDE: ', error));
@@ -29,10 +43,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>{ this.state.productDescription }</h1>
-        <h3>{ this.state.weight }</h3>
-      </div>
+      <StyledApp>
+        <StyledHeader>Overview</StyledHeader>
+        <DescriptionInfo overviewInfo={this.state.overviewInfo} />
+      </StyledApp>
     );
   }
 }

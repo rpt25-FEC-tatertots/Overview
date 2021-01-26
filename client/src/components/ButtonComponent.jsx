@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProductDetails from './ProductDetails.jsx';
 
 const StyledButtonContainer = styled.div`
   display: flex;
@@ -31,26 +30,26 @@ const TextStyle = styled.span`
   line-height: 3.6rem;
   `;
 
-class ButtonContainer extends React.Component {
+class ButtonComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false,
+      clicked: false,
     };
     this.updateState = this.updateState.bind(this);
   }
 
   updateState() {
-    this.setState({ isClicked: true });
+    this.setState({clicked: true});
+    this.props.handleButtonClick();
   }
 
   render() {
-    if (this.state.isClicked) {
+    if (this.state.clicked) {
       return (
-        <div>
+        <StyledButtonContainer>
           <TextStyle>View Impact</TextStyle>
-          <ProductDetails productDetails={this.props.productDetails} />
-        </div>
+        </StyledButtonContainer>
       );
     }
     return (
@@ -62,4 +61,4 @@ class ButtonContainer extends React.Component {
   }
 }
 
-export default ButtonContainer;
+export default ButtonComponent;

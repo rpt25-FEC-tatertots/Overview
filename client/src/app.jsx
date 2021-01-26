@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components';
-import DescriptionInfo from './components/DescriptionInfo.jsx';
+import DescriptionComponent from './components/DescriptionComponent.jsx';
+import IconComponent from './components/IconComponent.jsx';
+import ButtonComponent from './components/ButtonComponent.jsx';
 import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData';
 
 const StyledApp = styled.div`
@@ -22,12 +24,20 @@ const StyledHeader = styled.h2`
   font-weight: bold;
 `;
 
+const InfoContainer = styled.div`
+display: flex;
+flex-basis: 50%;
+flex-direction: column;
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       overviewInfo: {},
+      buttonClicked: false,
     };
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -41,12 +51,26 @@ class App extends React.Component {
       .catch((error) => console.log('FAILED ON CLIENT SIDE: ', error));
   }
 
+  handleButtonClick() {
+    this.setState({ buttonClicked: true });
+  }
+
   render() {
     return (
-      <StyledApp>
-        <StyledHeader>Overview</StyledHeader>
-        <DescriptionInfo overviewInfo={this.state.overviewInfo} />
-      </StyledApp>
+      <div>
+        <StyledApp>
+          <StyledHeader>Overview</StyledHeader>
+          <InfoContainer>
+            <DescriptionComponent overviewInfo={this.state.overviewInfo} />
+            <IconComponent icons={this.state.overviewInfo.icons} />
+            <ButtonComponent handleButtonClick={this.handleButtonClick} />
+          </InfoContainer>
+        </StyledApp>
+        <StyledApp>
+          <StyledHeader>Features</StyledHeader>
+          <InfoContainer> FEATURES</InfoContainer>
+        </StyledApp>
+      </div>
     );
   }
 }

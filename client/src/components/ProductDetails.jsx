@@ -42,7 +42,7 @@ class ProductDetails extends React.Component {
 
   render() {
     return (
-      <FeatureContainer>
+      <>
         <FeatureHeader>Features</FeatureHeader>
         <DetailsContainer>
           <DetailsRow>
@@ -52,7 +52,7 @@ class ProductDetails extends React.Component {
             <div>Feature Description</div>
           </DetailsRow>
         </DetailsContainer>
-      </FeatureContainer>
+      </>
     );
   }
 }

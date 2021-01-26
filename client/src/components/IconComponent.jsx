@@ -13,6 +13,11 @@ class IconComponent extends React.Component {
   }
 
   render() {
+    if (this.props.icons && this.props.icons.length > 0) {
+      return (
+        <div>icons is undefined</div>
+      );
+    }
     return (
       <StyledIconContainer>
         <div>ICON GOES HERE</div>

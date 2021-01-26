@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import DescriptionComponent from './components/DescriptionComponent.jsx';
 import IconComponent from './components/IconComponent.jsx';
 import ButtonComponent from './components/ButtonComponent.jsx';
+import ProductDetails from './components/ProductDetails.jsx';
 import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData';
 
 const StyledApp = styled.div`
@@ -56,6 +57,15 @@ class App extends React.Component {
   }
 
   render() {
+    // let FeatureDisplay;
+    // if (this.state.buttonClicked) {
+    //   FeatureDisplay = <>
+    //     <StyledHeader>Features</StyledHeader>
+    //       <InfoContainer> Put all the feature titles and descriptions here</InfoContainer>
+    //     </>
+    // } else {
+    //   FeatureDisplay = <div></div>
+    // }
     return (
       <div>
         <StyledApp>
@@ -67,8 +77,9 @@ class App extends React.Component {
           </InfoContainer>
         </StyledApp>
         <StyledApp>
-          <StyledHeader>Features</StyledHeader>
-          <InfoContainer> FEATURES</InfoContainer>
+          {this.state.buttonClicked ? <ProductDetails /> : <div></div>}
+          {/* <StyledHeader>Features</StyledHeader>
+          <InfoContainer> Put all the feature titles and descriptions here</InfoContainer> */}
         </StyledApp>
       </div>
     );

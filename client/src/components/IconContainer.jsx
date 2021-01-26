@@ -13,9 +13,10 @@ class IconContainer extends React.Component {
   }
 
   render() {
+    // NOTE: Likely need to do conditional rendering to get this to render properly
     return (
       <StyledIconContainer>
-        <div>ICON SVG</div>
+        <div>ICON GOES HERE</div>
         <div>ICON Title</div>
         <div>ICON description</div>
       </StyledIconContainer>

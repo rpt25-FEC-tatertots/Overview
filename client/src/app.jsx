@@ -19,7 +19,7 @@ const StyledHeader = styled.h2`
   line-height: 2rem;
   margin-top: .8rem;
   font-family: 'Nunito Sans', sans-serif;
-  font-weight: 400;
+  font-weight: bold;
 `;
 
 class App extends React.Component {

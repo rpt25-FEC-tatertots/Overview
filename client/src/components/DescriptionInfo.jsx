@@ -26,14 +26,14 @@ class DescriptionInfo extends React.Component {
 
   render() {
     // this component has multiple parts. The description div, the icon div, and the button div
-    const {product_description, icons} = this.props.overviewInfo;
+    const { overviewInfo } = this.props;
     return (
       <StyledContainer>
         <StyledDiv>
-          { product_description }
+          { overviewInfo.product_description }
         </StyledDiv>
-        <IconContainer iconInfo={icons} />
-        <ButtonContainer />
+        <IconContainer iconInfo={overviewInfo.icons} />
+        <ButtonContainer productDetails={overviewInfo} />
       </StyledContainer>
     );
   }

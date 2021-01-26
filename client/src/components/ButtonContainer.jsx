@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ProductDetails from './ProductDetails.jsx';
 
 const StyledButtonContainer = styled.div`
   display: flex;
@@ -33,13 +34,28 @@ const TextStyle = styled.span`
 class ButtonContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isClicked: false,
+    };
+    this.updateState = this.updateState.bind(this);
+  }
+
+  updateState() {
+    this.setState({ isClicked: true });
   }
 
   render() {
+    if (this.state.isClicked) {
+      return (
+        <div>
+          <TextStyle>View Impact</TextStyle>
+          <ProductDetails productDetails={this.props.productDetails} />
+        </div>
+      );
+    }
     return (
       <StyledButtonContainer>
-        <StyledButton> Specs And Features </StyledButton>
+        <StyledButton onClick={this.updateState}> Specs And Features </StyledButton>
         <TextStyle>View Impact</TextStyle>
       </StyledButtonContainer>
     );

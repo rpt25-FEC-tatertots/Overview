@@ -6,14 +6,18 @@ const StyledIconContainer = styled.div`
   flex-direction: column;
 `;
 
-class IconContainer extends React.Component {
+class IconComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
-    // NOTE: Likely need to do conditional rendering to get this to render properly
+    if (this.props.icons && this.props.icons.length > 0) {
+      return (
+        <div>icons is undefined</div>
+      );
+    }
     return (
       <StyledIconContainer>
         <div>ICON GOES HERE</div>
@@ -24,4 +28,4 @@ class IconContainer extends React.Component {
   }
 }
 
-export default IconContainer;
+export default IconComponent;

@@ -30,20 +30,22 @@ const TextStyle = styled.span`
   line-height: 3.6rem;
   `;
 
-class ButtonContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function ButtonComponent(props) {
+  const { clicked, handleButtonClick } = props;
 
-  render() {
+  if (clicked) {
     return (
       <StyledButtonContainer>
-        <StyledButton> Specs And Features </StyledButton>
         <TextStyle>View Impact</TextStyle>
       </StyledButtonContainer>
     );
   }
+  return (
+    <StyledButtonContainer>
+      <StyledButton onClick={handleButtonClick}> Specs And Features </StyledButton>
+      <TextStyle>View Impact</TextStyle>
+    </StyledButtonContainer>
+  );
 }
 
-export default ButtonContainer;
+export default ButtonComponent;

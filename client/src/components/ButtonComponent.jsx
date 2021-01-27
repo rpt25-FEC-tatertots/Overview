@@ -30,35 +30,21 @@ const TextStyle = styled.span`
   line-height: 3.6rem;
   `;
 
-class ButtonComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clicked: false,
-    };
-    this.updateState = this.updateState.bind(this);
-  }
-
-  updateState() {
-    this.setState({clicked: true});
-    this.props.handleButtonClick();
-  }
-
-  render() {
-    if (this.state.clicked) {
-      return (
-        <StyledButtonContainer>
-          <TextStyle>View Impact</TextStyle>
-        </StyledButtonContainer>
-      );
-    }
+function ButtonComponent(props) {
+  const { clicked, handleButtonClick } = props;
+  if (clicked) {
     return (
       <StyledButtonContainer>
-        <StyledButton onClick={this.updateState}> Specs And Features </StyledButton>
         <TextStyle>View Impact</TextStyle>
       </StyledButtonContainer>
     );
   }
+  return (
+    <StyledButtonContainer>
+      <StyledButton onClick={handleButtonClick}> Specs And Features </StyledButton>
+      <TextStyle>View Impact</TextStyle>
+    </StyledButtonContainer>
+  );
 }
 
 export default ButtonComponent;

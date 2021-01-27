@@ -9,20 +9,12 @@ const StyledDescription = styled.div`
   letter-spacing: -.32px;
 `;
 
-class DescriptionInfo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    const { overviewInfo } = this.props;
-    return (
-      <StyledDescription>
-        { overviewInfo.product_description }
-      </StyledDescription>
-    );
-  }
+function DescriptionInfo(props) {
+  return (
+    <StyledDescription>
+      { props.description }
+    </StyledDescription>
+  );
 }
 
 export default DescriptionInfo;

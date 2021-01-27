@@ -57,18 +57,19 @@ class App extends React.Component {
   }
 
   render() {
+    const { buttonClicked, overviewInfo } = this.state;
     return (
       <div>
         <StyledApp>
           <StyledHeader>Overview</StyledHeader>
           <InfoContainer>
-            <DescriptionComponent overviewInfo={this.state.overviewInfo} />
-            <IconComponent icons={this.state.overviewInfo.icons} />
-            <ButtonComponent handleButtonClick={this.handleButtonClick} />
+            <DescriptionComponent description={overviewInfo.product_description} />
+            <IconComponent icons={overviewInfo.icons} />
+            <ButtonComponent handleButtonClick={this.handleButtonClick} clicked={buttonClicked} />
           </InfoContainer>
         </StyledApp>
         <StyledApp>
-          {this.state.buttonClicked ? <ProductDetails /> : <div></div>}
+          {buttonClicked ? <ProductDetails /> : <div></div>}
         </StyledApp>
       </div>
     );

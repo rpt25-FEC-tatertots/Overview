@@ -32,6 +32,7 @@ const TextStyle = styled.span`
 
 function ButtonComponent(props) {
   const { clicked, handleButtonClick } = props;
+
   if (clicked) {
     return (
       <StyledButtonContainer>

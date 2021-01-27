@@ -28,7 +28,7 @@ const TextStyle = styled.span`
   font-weight: bold;
   color: black;
   line-height: 3.6rem;
-  `;
+`;
 
 function ButtonComponent(props) {
   const { clicked, handleButtonClick } = props;

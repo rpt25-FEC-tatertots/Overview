@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'development',
-  entry: __dirname + '/client/src/app.jsx',
+  entry: __dirname + '/client/src/OverviewComponent.jsx',
   module: {
     rules: [
       {
@@ -16,7 +16,7 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'overviewBundle.js',
     path: __dirname + '/public/dist',
   },
 };

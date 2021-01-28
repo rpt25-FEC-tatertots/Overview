@@ -8,7 +8,7 @@ import ButtonComponent from './components/ButtonComponent.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
 import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData';
 
-const StyledApp = styled.div`
+const StyledParent = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -31,7 +31,7 @@ flex-basis: 50%;
 flex-direction: column;
 `;
 
-class App extends React.Component {
+class OverviewComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,20 +60,20 @@ class App extends React.Component {
     const { buttonClicked, overviewInfo } = this.state;
     return (
       <div>
-        <StyledApp>
+        <StyledParent>
           <StyledHeader>Overview</StyledHeader>
           <InfoContainer>
             <DescriptionComponent description={overviewInfo.product_description} />
             <IconComponent icons={overviewInfo.icons} />
             <ButtonComponent handleButtonClick={this.handleButtonClick} clicked={buttonClicked} />
           </InfoContainer>
-        </StyledApp>
-        <StyledApp>
+        </StyledParent>
+        <StyledParent>
           {buttonClicked ? <ProductDetails /> : <div></div>}
-        </StyledApp>
+        </StyledParent>
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<OverviewComponent />, document.getElementById('overviewService'));

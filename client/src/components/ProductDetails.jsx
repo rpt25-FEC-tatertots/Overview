@@ -41,10 +41,14 @@ class ProductDetails extends React.Component {
         <FeatureHeader>Features</FeatureHeader>
         <DetailsContainer>
           <DetailsRow>
-            <div>Feature Title</div>
-            <div>Feature Description</div>
-            <div>Feature Title</div>
-            <div>Feature Description</div>
+            <div>
+              <div>{this.props.details.feature1_title}</div>
+              <div>{this.props.details.feature1_description}</div>
+            </div>
+            <div>
+              <div>Feature Title</div>
+              <div>Feature Description</div>
+            </div>
           </DetailsRow>
         </DetailsContainer>
       </>

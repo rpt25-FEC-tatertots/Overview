@@ -69,7 +69,10 @@ class OverviewComponent extends React.Component {
           </InfoContainer>
         </StyledParent>
         <StyledParent>
-          {buttonClicked ? <ProductDetails /> : <div></div>}
+          {buttonClicked ? <ProductDetails details={overviewInfo} /> : <div />}
+        </StyledParent>
+        <StyledParent>
+          {buttonClicked ? <div>MATERIALS</div> : <div />}
         </StyledParent>
       </div>
     );

@@ -31,7 +31,21 @@ const DetailsRow = styled.div`
 // display all rows in a column
 
 function ProductDetails({ details }) {
-  const { feature1_title, feature1_description } = details;
+  const {
+    feature1_title,
+    feature1_description,
+    feature2_title,
+    feature2_description,
+    feature3_title,
+    feature3_description,
+    feature4_title,
+    feature4_description,
+    feature5_title,
+    feature5_description,
+    feature6_title,
+    feature6_description,
+  } = details;
+
   return (
     <>
       <FeatureHeader>Features</FeatureHeader>
@@ -42,8 +56,8 @@ function ProductDetails({ details }) {
             <div>{ feature1_description }</div>
           </div>
           <div>
-            <div>Feature Title</div>
-            <div>Feature Description</div>
+            <div>{feature2_title}</div>
+            <div>{feature2_description}</div>
           </div>
         </DetailsRow>
       </DetailsContainer>

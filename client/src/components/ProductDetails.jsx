@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import styled from 'styled-components';
+import TitleFeatureComponent from './TitleFeatureComponent.jsx';
 
 // create style that can be applied to feature title text
 const FeatureHeader = styled.h2`
@@ -44,6 +45,7 @@ function ProductDetails({ details }) {
     feature5_description,
     feature6_title,
     feature6_description,
+    weight,
   } = details;
 
   return (
@@ -51,14 +53,19 @@ function ProductDetails({ details }) {
       <FeatureHeader>Features</FeatureHeader>
       <DetailsContainer>
         <DetailsRow>
-          <div>
-            <div>{ feature1_title }</div>
-            <div>{ feature1_description }</div>
-          </div>
-          <div>
-            <div>{feature2_title}</div>
-            <div>{feature2_description}</div>
-          </div>
+          <TitleFeatureComponent title={feature1_title} description={feature1_description} />
+          <TitleFeatureComponent title={feature2_title} description={feature2_description} />
+        </DetailsRow>
+        <DetailsRow>
+          <TitleFeatureComponent title={feature3_title} description={feature3_description} />
+          <TitleFeatureComponent title={feature4_title} description={feature4_description} />
+        </DetailsRow>
+        <DetailsRow>
+          <TitleFeatureComponent title={feature5_title} description={feature5_description} />
+          <TitleFeatureComponent title={feature6_title} description={feature6_description} />
+        </DetailsRow>
+        <DetailsRow>
+          <TitleFeatureComponent title="weight" description={weight} />
         </DetailsRow>
       </DetailsContainer>
     </>

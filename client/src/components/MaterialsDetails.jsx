@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import TitleFeatureComponent from './TitleFeatureComponent.jsx';
 
 // create style that can be applied to feature title text
 const FeatureHeader = styled.h2`
@@ -41,10 +42,7 @@ class MaterialsDetails extends React.Component {
         <FeatureHeader>Materials</FeatureHeader>
         <DetailsContainer>
           <DetailsRow>
-            <div>
-              <div>Materials Description</div>
-              <div>Materials Description</div>
-            </div>
+            <TitleFeatureComponent description="Description of Materials goes here" />
           </DetailsRow>
         </DetailsContainer>
       </>

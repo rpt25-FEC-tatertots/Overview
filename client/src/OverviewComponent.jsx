@@ -6,6 +6,7 @@ import DescriptionComponent from './components/DescriptionComponent.jsx';
 import IconComponent from './components/IconComponent.jsx';
 import ButtonComponent from './components/ButtonComponent.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
+import MaterialsDetails from './components/MaterialsDetails.jsx';
 import { randomNumberGenerator } from '../../database/fakeData/overviewDummyData';
 
 const StyledParent = styled.div`
@@ -43,7 +44,7 @@ class OverviewComponent extends React.Component {
 
   componentDidMount() {
     const randomId = randomNumberGenerator(100);
-    axios.get(`/overview/icons?product_id=${randomId}`)
+    axios.get(`/overview?product_id=${randomId}`)
       .then((response) => {
         this.setState({
           overviewInfo: response.data,
@@ -72,7 +73,7 @@ class OverviewComponent extends React.Component {
           {buttonClicked ? <ProductDetails details={overviewInfo} /> : <div />}
         </StyledParent>
         <StyledParent>
-          {buttonClicked ? <div>MATERIALS</div> : <div />}
+          {buttonClicked ? <MaterialsDetails details={overviewInfo} /> : <div />}
         </StyledParent>
       </div>
     );

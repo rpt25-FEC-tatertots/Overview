@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -28,32 +30,25 @@ const DetailsRow = styled.div`
 
 // display all rows in a column
 
-class ProductDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
-      <>
-        <FeatureHeader>Features</FeatureHeader>
-        <DetailsContainer>
-          <DetailsRow>
-            <div>
-              <div>{this.props.details.feature1_title}</div>
-              <div>{this.props.details.feature1_description}</div>
-            </div>
-            <div>
-              <div>Feature Title</div>
-              <div>Feature Description</div>
-            </div>
-          </DetailsRow>
-        </DetailsContainer>
-      </>
-    );
-  }
+function ProductDetails({ details }) {
+  const { feature1_title, feature1_description } = details;
+  return (
+    <>
+      <FeatureHeader>Features</FeatureHeader>
+      <DetailsContainer>
+        <DetailsRow>
+          <div>
+            <div>{ feature1_title }</div>
+            <div>{ feature1_description }</div>
+          </div>
+          <div>
+            <div>Feature Title</div>
+            <div>Feature Description</div>
+          </div>
+        </DetailsRow>
+      </DetailsContainer>
+    </>
+  );
 }
 
 export default ProductDetails;

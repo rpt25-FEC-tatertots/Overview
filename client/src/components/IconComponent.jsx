@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaEnvira, FaRecycle } from 'react-icons/fa';
 import styled from 'styled-components';
 
 const StyledIconContainer = styled.div`
@@ -15,7 +16,10 @@ class IconComponent extends React.Component {
   render() {
     if (this.props.icons && this.props.icons.length > 0) {
       return (
-        <div>icons is undefined</div>
+        <div>
+          <FaEnvira />
+          <FaRecycle />
+        </div>
       );
     }
     return (

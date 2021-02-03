@@ -7,15 +7,15 @@ db.overview = require('../database/models/overview.model.js');
 
 const app = express();
 
-app.use(express.static('./public/dist'));
+app.use('/:product_id', express.static('./public/dist'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 db.overview.belongsToMany(db.icons, { through: 'overview_icons' });
 db.icons.belongsToMany(db.overview, { through: 'overview_icons' });
 
-app.get('/overview', (req, res) => {
-  const productNum = req.query.product_id;
+app.get('/overview/:product_id', (req, res) => {
+  const productNum = req.params.product_id;
   return db.overview.findByPk(productNum, { include: [db.icons] })
     .then((overviewInfo) => {
       res.send(overviewInfo);

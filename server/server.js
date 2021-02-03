@@ -8,6 +8,7 @@ db.overview = require('../database/models/overview.model.js');
 const app = express();
 
 app.use('/:product_id', express.static('./public/dist'));
+app.use(express.static('./public/dist'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

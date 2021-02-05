@@ -16,6 +16,18 @@ const StyledIconButton = styled.button`
   align-self: center;
 `;
 
+const IconHeader = styled.h2`
+  font-family: Nunito Sans;
+  font-weight: bold;
+  flex-basis: 25.390625%;
+  font-size: 1.25rem;
+`;
+
+const IconDescription = styled.div`
+  font-family: Nunito Sans;
+  font-weight: 400;
+`;
+
 class IconComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -49,8 +61,8 @@ class IconComponent extends React.Component {
           <StyledIconContainer>
             {displayIcons}
           </StyledIconContainer>
-          <div>{icons[this.state.currentIndex].icon_title}</div>
-          <div>{icons[this.state.currentIndex].icon_description}</div>
+          <IconHeader>{icons[this.state.currentIndex].icon_title}</IconHeader>
+          <IconDescription>{icons[this.state.currentIndex].icon_description}</IconDescription>
         </>
       );
     }

@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const db = require('../database/connection.js');
 db.icons = require('../database/models/icons.model.js');
@@ -11,6 +12,7 @@ app.use('/:product_id', express.static('./public/dist'));
 app.use(express.static('./public/dist'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 db.overview.belongsToMany(db.icons, { through: 'overview_icons' });
 db.icons.belongsToMany(db.overview, { through: 'overview_icons' });

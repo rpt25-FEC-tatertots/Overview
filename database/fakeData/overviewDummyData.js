@@ -1,4 +1,4 @@
-import faker from 'faker';
+const faker = require('faker');
 
 // random number generator function generates a random number between 0 and 'num'
 const randomNumberGenerator = (num) => faker.random.number(num);
@@ -46,4 +46,4 @@ const generatePartialRecord = () => {
   return partialRecord;
 };
 
-export { generateOneRecord, generatePartialRecord, randomNumberGenerator };
+module.exports = { generateOneRecord, generatePartialRecord, randomNumberGenerator };

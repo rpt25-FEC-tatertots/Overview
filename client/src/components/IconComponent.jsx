@@ -38,7 +38,6 @@ class IconComponent extends React.Component {
   }
 
   updateSelectedIcon(i) {
-    console.log('CLICKED', i);
     this.setState({ currentIndex: i });
   }
 

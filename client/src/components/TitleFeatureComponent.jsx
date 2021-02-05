@@ -1,9 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const ListStyle = styled.li`
+  list-style-type: none;
+  margin-bottom: 6.5rem;
+  flex-basis: calc(50% - 2rem);
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+`;
+
 const TitleBold = styled.div`
   font-family: Nunito Sans;
   font-weight: bold;
+  margin-bottom: 1.4rem;
 `;
 
 const DescriptionStyle = styled.div`
@@ -12,10 +21,10 @@ const DescriptionStyle = styled.div`
 
 function TitleFeatureComponent({title, description}) {
   return (
-    <div>
+    <ListStyle>
       <TitleBold> { title } </TitleBold>
       <DescriptionStyle> { description }</DescriptionStyle>
-    </div>
+    </ListStyle>
   );
 }
 

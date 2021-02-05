@@ -9,6 +9,7 @@ const FeatureHeader = styled.h2`
   font-family: Nunito Sans;
   font-weight: bold;
   flex-basis: 25.390625%;
+  font-size: 1.25rem;
 `;
 
 // create style that can be applies to feature description text

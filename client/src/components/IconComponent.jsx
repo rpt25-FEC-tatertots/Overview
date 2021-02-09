@@ -6,14 +6,17 @@ const StyledIconContainer = styled.div`
   display: flex;
 `;
 
-const StyledIconButton = styled.button`
+const StyledIconButton = styled.div`
   display: flex;
   padding: 0;
   align-items: center;
   background-color: ${props => props.isSelected ? 'black' : 'white'};
-  border-style: normal;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
   border-radius: 50%;
   align-self: center;
+  margin-right: 5px;
 `;
 
 const IconHeader = styled.h2`

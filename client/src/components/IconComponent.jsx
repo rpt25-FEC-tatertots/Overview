@@ -10,7 +10,7 @@ const StyledIconButton = styled.button`
   display: flex;
   padding: 0;
   align-items: center;
-  background-color: black;
+  background-color: ${props => props.isSelected ? 'black' : 'white'};
   border-style: normal;
   border-radius: 50%;
   align-self: center;
@@ -46,8 +46,19 @@ class IconComponent extends React.Component {
     if (icons && icons.length > 0) {
       const displayIcons = icons.map((icon, index) => {
         return (
-          <StyledIconButton key={icon.icon_title} onClick={() => this.updateSelectedIcon(index)}>
-            <svg fill="white" width="50" height="50" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <StyledIconButton
+            key={icon.icon_title}
+            onClick={() => this.updateSelectedIcon(index)}
+            isSelected={this.state.currentIndex === index}
+          >
+            <svg
+              fill={this.state.currentIndex === index ? 'white' : 'black'}
+              width="50"
+              height="50"
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid meet"
+            >
               <path d={icon.icon_svg} />
             </svg>
           </StyledIconButton>

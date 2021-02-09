@@ -19,7 +19,7 @@ const DescriptionStyle = styled.div`
   font-family: Nunito Sans;
 `;
 
-function TitleFeatureComponent({title, description}) {
+function TitleFeatureComponent({ title, description }) {
   return (
     <ListStyle>
       <TitleBold> { title } </TitleBold>

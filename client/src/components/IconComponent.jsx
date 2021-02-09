@@ -58,16 +58,17 @@ class IconComponent extends React.Component {
 
   render() {
     const { icons } = this.props;
+    const { currentIndex } = this.state;
     if (icons && icons.length > 0) {
       const displayIcons = icons.map((icon, index) => {
         return (
           <StyledIconButton
             key={icon.icon_title}
             onClick={() => this.updateSelectedIcon(index)}
-            isSelected={this.state.currentIndex === index}
+            isSelected={currentIndex === index}
           >
             <StyledIconSVG
-              isSelected={this.state.currentIndex === index}
+              isSelected={currentIndex === index}
               width="50"
               height="50"
               viewBox="0 0 32 32"
@@ -85,8 +86,8 @@ class IconComponent extends React.Component {
           <StyledIconContainer>
             {displayIcons}
           </StyledIconContainer>
-          <IconHeader>{icons[this.state.currentIndex].icon_title}</IconHeader>
-          <IconDescription>{icons[this.state.currentIndex].icon_description}</IconDescription>
+          <IconHeader>{icons[currentIndex].icon_title}</IconHeader>
+          <IconDescription>{icons[currentIndex].icon_description}</IconDescription>
         </>
       );
     }

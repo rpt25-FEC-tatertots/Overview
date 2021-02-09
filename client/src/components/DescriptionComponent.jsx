@@ -9,10 +9,10 @@ const StyledDescription = styled.div`
   letter-spacing: -.32px;
 `;
 
-function DescriptionInfo(props) {
+function DescriptionInfo({ description }) {
   return (
     <StyledDescription>
-      { props.description }
+      { description }
     </StyledDescription>
   );
 }

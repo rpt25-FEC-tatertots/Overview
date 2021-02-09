@@ -17,6 +17,18 @@ const StyledIconButton = styled.div`
   border-radius: 50%;
   align-self: center;
   margin-right: 5px;
+  :hover {
+    background-color: black;
+    transition: background-color .4s ease-in-out;
+  }
+`;
+
+const StyledIconSVG = styled.svg`
+  fill: ${props => props.isSelected ? 'white' : 'black'};
+  :hover {
+    fill: white;
+    transition: fill .4s ease-in-out;
+  }
 `;
 
 const IconHeader = styled.h2`
@@ -54,8 +66,8 @@ class IconComponent extends React.Component {
             onClick={() => this.updateSelectedIcon(index)}
             isSelected={this.state.currentIndex === index}
           >
-            <svg
-              fill={this.state.currentIndex === index ? 'white' : 'black'}
+            <StyledIconSVG
+              isSelected={this.state.currentIndex === index}
               width="50"
               height="50"
               viewBox="0 0 32 32"
@@ -63,7 +75,7 @@ class IconComponent extends React.Component {
               preserveAspectRatio="xMidYMid meet"
             >
               <path d={icon.icon_svg} />
-            </svg>
+            </StyledIconSVG>
           </StyledIconButton>
         );
       });

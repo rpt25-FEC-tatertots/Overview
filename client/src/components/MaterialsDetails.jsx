@@ -31,7 +31,7 @@ class MaterialsDetails extends React.Component {
         <FeatureHeader>Materials</FeatureHeader>
         <DetailsContainer>
           <DetailsRow>
-            <TitleFeatureComponent description="Description of Materials goes here" />
+            <TitleFeatureComponent description="100% vegan, free-range rubber duck" />
           </DetailsRow>
         </DetailsContainer>
       </>

@@ -17,6 +17,9 @@ const StyledButton = styled.button`
   font-weight: bold;
   color: white;
   line-height: 3.6rem;
+  :hover {
+    transform: scale(1.015);
+  }
 `;
 
 const TextStyle = styled.span`

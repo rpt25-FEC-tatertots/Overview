@@ -36,6 +36,7 @@ class OverviewComponent extends React.Component {
     super(props);
     this.state = {
       overviewInfo: {},
+      materialsInfo: [],
       buttonClicked: false,
     };
     this.handleButtonClick = this.handleButtonClick.bind(this);
@@ -46,7 +47,8 @@ class OverviewComponent extends React.Component {
     axios.get(`/overview${id}`)
       .then((response) => {
         this.setState({
-          overviewInfo: response.data,
+          overviewInfo: response.data.overviewInfo,
+          materialsInfo: response.data.materialsInfo,
         });
       })
       .catch((error) => console.log('FAILED ON CLIENT SIDE: ', error));
@@ -57,7 +59,7 @@ class OverviewComponent extends React.Component {
   }
 
   render() {
-    const { buttonClicked, overviewInfo } = this.state;
+    const { buttonClicked, overviewInfo, materialsInfo } = this.state;
     return (
       <div>
         <StyledParent>
@@ -72,7 +74,7 @@ class OverviewComponent extends React.Component {
           {buttonClicked ? <ProductDetails details={overviewInfo} /> : <div />}
         </StyledParent>
         <StyledParent>
-          {buttonClicked ? <MaterialsDetails details={overviewInfo} /> : <div />}
+          {buttonClicked ? <MaterialsDetails materialsInfo={materialsInfo} /> : <div />}
         </StyledParent>
       </div>
     );

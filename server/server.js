@@ -28,6 +28,11 @@ app.get('/overview/:product_id', (req, res) => {
     });
 });
 
+//make call to get material data
+// app.get('/materials/:product_id', (req, res) => {
+
+// });
+
 app.listen(5007, () => {
   console.log('listening on port 5007!');
 });

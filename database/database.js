@@ -12,54 +12,69 @@ const iconsData = require('./fakeData/iconsDummyData.js');
 db.overview.belongsToMany(db.icons, { through: 'overview_icons' });
 db.icons.belongsToMany(db.overview, { through: 'overview_icons' });
 
-// create tables based off models and associations
-db.sync()
-// db.sync({force: true})
-  .then(() => console.log('SUCCESS'))
-  .catch(() => console.log('ERROR'));
-
 // NOTE: for queries, I want "eager loading" using the "include" option
 
-const addToOverview = async () => {
-  for (let i = 0; i < 100; i++) {
+const addToOverview = () => {
+  const promises = [];
+  for (let i = 0; i < 101; i++) {
     if (i % 2 === 0) {
-      const newRecord = overviewData.generateOneRecord();
-      await db.overview.create(newRecord);
+      const newRecord = overviewData.generateOneRecord(i);
+      promises.push(db.overview.upsert(newRecord));
     } else {
-      const newRecord = overviewData.generatePartialRecord();
-      await db.overview.create(newRecord);
+      const newRecord = overviewData.generatePartialRecord(i);
+      promises.push(db.overview.upsert(newRecord));
     }
   }
+  return Promise.all(promises)
+    .then(() => {
+      console.log('SUCCESS AFTER PROMISE ALL:');
+    })
+    .catch((err) => {
+      console.log('FAILURE AFTER PROMISE ALL: ', err);
+    });
 };
 
 const addToIcons = async () => {
   await iconsData.forEach((icon) => db.icons.addNewIcon(icon));
 };
 
-addToOverview()
-  .then(() => {
-    addToIcons();
-  })
-  .then(() => {
-    return db.overview.findAll({
-      where: {
-        product_id: {
-          [lte]: 100,
+const seedingFunction = () => {
+  addToOverview()
+    .then(() => {
+      addToIcons();
+    })
+    .then(() => {
+      return db.overview.findAll({
+        where: {
+          product_id: {
+            [lte]: 100,
+          },
         },
-      },
-    });
-  })
-  .then((allRecords) => {
-    for (let i = 0; i < allRecords.length; i++) {
-      const currentRecord = allRecords[i];
-      for (let j = 0; j <= 3; j++) {
-        const randomIconId = overviewData.randomNumberGenerator({ min: 1, max: 13 });
-        db.icons.findByPk(randomIconId).then((icon) => {
-          currentRecord.addIcon(icon);
-        });
+      });
+    })
+    .then((allRecords) => {
+      for (let i = 0; i < allRecords.length; i++) {
+        const currentRecord = allRecords[i];
+        for (let j = 0; j <= 3; j++) {
+          const randomIconId = overviewData.randomNumberGenerator({ min: 1, max: 13 });
+          db.icons.findByPk(randomIconId)
+            .then((icon) => {
+              currentRecord.addIcon(icon);
+            });
+        }
       }
-    }
-  })
-  .catch((err) => console.log('🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎ERROR IN NEW FUNCTION: ', err));
+    })
+    .catch((err) => console.log('🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎ERROR IN NEW FUNCTION: ', err));
+};
 
+// create tables based off models and associations
+db.sync()
+// db.sync({ force: true })
+  .then(() => {
+    seedingFunction();
+  })
+  .then(() => {
+    console.log('SUCCESS🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎');
+  })
+  .catch(() => console.log('ERROR🥎🥎🥎🥎🥎🥎🥎🥎🥎🥎'));
 // module.exports = { returnProductAndIcons }

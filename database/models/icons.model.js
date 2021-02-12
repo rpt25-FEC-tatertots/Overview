@@ -12,6 +12,7 @@ const Icons = sequelize.define('icons', {
   icon_title: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true,
   },
   icon_svg: {
     type: Sequelize.TEXT,
@@ -29,7 +30,7 @@ const Icons = sequelize.define('icons', {
 
 Icons.addNewIcon = async (newIcon) => {
   try {
-    await Icons.create(newIcon);
+    await Icons.upsert(newIcon);
     await console.log('SUCCESSFULLY ADDED ICON');
   } catch (error) {
     console.log('FAILED ADDING ICON: ', error);

@@ -4,8 +4,9 @@ const faker = require('faker');
 const randomNumberGenerator = (num) => faker.random.number(num);
 
 // generates one complete record
-const generateOneRecord = () => {
+const generateOneRecord = (primaryKey) => {
   const oneRecord = {
+    product_id: primaryKey,
     product_description: faker.lorem.sentence(randomNumberGenerator(35)),
     feature1_title: faker.lorem.word(),
     feature1_description: faker.lorem.words(randomNumberGenerator(15)),
@@ -26,8 +27,9 @@ const generateOneRecord = () => {
 };
 
 // generates one partial record
-const generatePartialRecord = () => {
+const generatePartialRecord = (primaryKey) => {
   const partialRecord = {
+    product_id: primaryKey,
     product_description: faker.lorem.sentence(randomNumberGenerator(15)),
     feature1_title: faker.lorem.word(),
     feature1_description: faker.lorem.words(randomNumberGenerator(15)),

@@ -22,8 +22,12 @@ const DescriptionStyle = styled.div`
 function TitleFeatureComponent({ title, description }) {
   return (
     <ListStyle>
-      <TitleBold> { title } </TitleBold>
-      <DescriptionStyle> { description }</DescriptionStyle>
+      <TitleBold>
+        { title }
+      </TitleBold>
+      <DescriptionStyle>
+        { description }
+      </DescriptionStyle>
     </ListStyle>
   );
 }

@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const axios = require('axios');
 
 const db = require('../database/connection.js');
 db.icons = require('../database/models/icons.model.js');
@@ -17,15 +18,18 @@ app.use(cors());
 db.overview.belongsToMany(db.icons, { through: 'overview_icons' });
 db.icons.belongsToMany(db.overview, { through: 'overview_icons' });
 
-app.get('/overview/:product_id', (req, res) => {
+app.get('/overview/:product_id', async (req, res) => {
   const productNum = req.params.product_id;
-  return db.overview.findByPk(productNum, { include: [db.icons] })
-    .then((overviewInfo) => {
-      res.send(overviewInfo);
-    })
-    .catch((err) => {
-      console.log('ERROR IN SERVER: ', err);
-    });
+  const data = {};
+  try {
+    const overviewInfo = await db.overview.findByPk(productNum, { include: [db.icons] });
+    const materialsInfo = await axios.get(`http://localhost:5002/materials/${productNum}`);
+    data.overviewInfo = overviewInfo.dataValues;
+    data.materialsInfo = materialsInfo.data;
+    res.send(data);
+  } catch (err) {
+    res.send(404);
+  }
 });
 
 app.listen(5007, () => {

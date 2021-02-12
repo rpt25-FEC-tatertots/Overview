@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaEnvira, FaRecycle } from 'react-icons/fa';
 import styled from 'styled-components';
 
 const StyledIconContainer = styled.div`
@@ -10,7 +9,7 @@ const StyledIconButton = styled.div`
   display: flex;
   padding: 0;
   align-items: center;
-  background-color: ${props => props.isSelected ? 'black' : 'white'};
+  background-color: ${(props) => props.isSelected ? 'black' : 'white'};
   border-style: solid;
   border-width: 3px;
   border-color: black;
@@ -24,7 +23,7 @@ const StyledIconButton = styled.div`
 `;
 
 const StyledIconSVG = styled.svg`
-  fill: ${props => props.isSelected ? 'white' : 'black'};
+  fill: ${(props) => props.isSelected ? 'white' : 'black'};
   :hover {
     fill: white;
     transition: fill .4s ease-in-out;

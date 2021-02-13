@@ -1,0 +1,18 @@
+## install NVM with the following:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
+## activate NVM with the following:
+. ~/.nvm/nvm.sh
+
+## install node with the following:
+nvm install node
+
+##################
+## at this point, you can npm install other packages
+##################
+
+## check that node is installed and running correctly:
+node -e "console.log('Running Node.js ' + process.version)"
+
+## install version 12 of node to reduce differences between EC2 instance and local environment:
+nvm install 12

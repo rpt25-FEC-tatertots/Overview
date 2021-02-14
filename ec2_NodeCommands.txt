@@ -18,7 +18,7 @@ node -e "console.log('Running Node.js ' + process.version)"
 nvm install 12
 
 ## how to perform an updated on your EC2 instance:
-sudo yumm update -you
+sudo yum update -y
 
 ## To install git, run this command:
 sudo yum install git -y

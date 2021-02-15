@@ -23,7 +23,7 @@ app.get('/overview/:product_id', async (req, res) => {
   const data = {};
   try {
     const overviewInfo = await db.overview.findByPk(productNum, { include: [db.icons] });
-    const materialsInfo = await axios.get(`http://localhost:5002/materials/${productNum}`);
+    const materialsInfo = await axios.get(`http://ec2-3-140-250-26.us-east-2.compute.amazonaws.com:5002/materials/${productNum}`);
     data.overviewInfo = overviewInfo.dataValues;
     data.materialsInfo = materialsInfo.data;
     res.send(data);
@@ -37,3 +37,4 @@ app.listen(5007, () => {
 });
 
 module.exports = app;
+

@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: __dirname + '/client/src/OverviewComponent.jsx',
   module: {
     rules: [

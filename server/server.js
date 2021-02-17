@@ -28,6 +28,18 @@ app.get('/overview/:product_id', async (req, res) => {
     data.materialsInfo = materialsInfo.data;
     res.send(data);
   } catch (err) {
+    const overviewInfo = await db.overview.findByPk(productNum, { include: [db.icons] });
+    data.overviewInfo = overviewInfo.dataValues;
+    res.send(data);
+  }
+});
+
+app.get('/icons/:product_id', async (req, res) => {
+  const { product_id } = req.params;
+  try {
+    const overviewInfo = await db.overview.findByPk(product_id, { include: [db.icons] });
+    res.send(overviewInfo.dataValues);
+  } catch (err) {
     res.send(404);
   }
 });

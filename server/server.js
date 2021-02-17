@@ -23,7 +23,7 @@ app.get('/overview/:product_id', async (req, res) => {
   const data = {};
   try {
     const overviewInfo = await db.overview.findByPk(productNum, { include: [db.icons] });
-    const materialsInfo = await axios.get(`http://18.220.150.96:5002/materials/${productNum}`);
+    const materialsInfo = await axios.get(`http://3.136.32.206:5002/materials/${productNum}`);
     data.overviewInfo = overviewInfo.dataValues;
     data.materialsInfo = materialsInfo.data;
     res.send(data);

@@ -7,6 +7,7 @@ import IconComponent from './components/IconComponent.jsx';
 import ButtonComponent from './components/ButtonComponent.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
 import MaterialsDetails from './components/MaterialsDetails.jsx';
+const defaultStateInformation = require('../../fallbackData.js');
 
 const StyledParent = styled.div`
   display: flex;
@@ -35,7 +36,7 @@ class OverviewComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      overviewInfo: {},
+      overviewInfo: defaultStateInformation,
       materialsInfo: [],
       buttonClicked: false,
     };

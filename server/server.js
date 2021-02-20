@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+const defaultStateInformation = require('../fallbackData.js');
 
 const db = require('../database/connection.js');
 db.icons = require('../database/models/icons.model.js');
@@ -28,8 +29,7 @@ app.get('/overview/:product_id', async (req, res) => {
     data.materialsInfo = materialsInfo.data;
     res.send(data);
   } catch (err) {
-    const overviewInfo = await db.overview.findByPk(productNum, { include: [db.icons] });
-    data.overviewInfo = overviewInfo.dataValues;
+    data.overviewInfo = defaultStateInformation;
     res.send(data);
   }
 });
@@ -40,7 +40,7 @@ app.get('/icons/:product_id', async (req, res) => {
     const overviewInfo = await db.overview.findByPk(product_id, { include: [db.icons] });
     res.send(overviewInfo.dataValues);
   } catch (err) {
-    res.send(404);
+    res.send(defaultStateInformation);
   }
 });
 

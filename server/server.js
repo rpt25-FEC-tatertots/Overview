@@ -1,15 +1,15 @@
 const express = require('express');
 const cors = require('cors');
+const compression = require('compression');
 const axios = require('axios');
 const defaultStateInformation = require('../fallbackData.js');
 
 const db = require('../database/connection.js');
 db.icons = require('../database/models/icons.model.js');
 db.overview = require('../database/models/overview.model.js');
-// const queries = require('../database/database.js');
 
 const app = express();
-
+app.use(compression());
 app.use('/:product_id', express.static('./public/dist'));
 app.use(express.static('./public/dist'));
 app.use(express.urlencoded({ extended: true }));
